@@ -65,26 +65,28 @@ do
                     echo "Installing Prerequirements......"
 
 #                    apt-get install -y -q=3 openssh-server
-						apt-get install -y -q=3 build-essential checkinstall
-						mkdir -p /var/www/newznab
-						chmod 777 /var/www/newznab
-						apt-get install -y -q=3 php5
-						apt-get install -y -q=3 php5-dev
-						apt-get install -y -q=3 php-pear
-						apt-get install -y -q=3 php5-gd
-						apt-get install -y -q=3 php5-mysql
-						apt-get install -y -q=3 php5-curl
-						apt-get -y install -q=3 mysql-server mysql-client libmysqlclient-dev
-						apt-get -y install -q=3 apache2
-						a2dissite default
-						a2ensite newznab
-						a2enmod rewrite
-						service apache2 restart
-						apt-get -y install -q=3 python-software-properties
-						add-apt-repository -y  ppa:jon-severinsson/ffmpeg
-						add-apt-repository -y  ppa:shiki/mediainfo
-					echo "Prerequirements installed...."
-				sleep 5
+			apt-get install -y -q=3 build-essential checkinstall
+			mkdir -p /var/www/newznab
+			chmod 777 /var/www/newznab
+			apt-get install -y -q=3 php5
+			apt-get install -y -q=3 php5-dev
+			apt-get install -y -q=3 php-pear
+			apt-get install -y -q=3 php5-gd
+			apt-get install -y -q=3 php5-mysql
+			apt-get install -y -q=3 php5-curl
+			apt-get install -y -q=3 php5-fpm
+			apt-get install -y -q=3 mysql-server mysql-client libmysqlclient-dev
+			apt-get install -y -q=3 apache2
+			apt-get install -y -q=3 openssh-server
+			a2dissite default
+			a2ensite newznab
+			a2enmod rewrite
+			service apache2 restart
+			apt-get install -y -q=3 python-software-properties
+			add-apt-repository -y  ppa:jon-severinsson/ffmpeg
+			add-apt-repository -y  ppa:shiki/mediainfo
+			echo "Prerequirements installed...."
+			sleep 5
 			clear 
 			break
           ;;
@@ -257,6 +259,7 @@ read choice
  
 if [ "$choice"=="y" -o "$choice"=="Y" ]
 then
+apt-get install -y -q=3 nmon mytop tmux iftop bwmng vnstat atop iotop
 cd /var/www/newznab/misc/update_scripts/nix_scripts/
 git clone https://github.com/jonnyboy/newznab-tmux.git tmux
 cd tmux
@@ -289,7 +292,3 @@ echo "Go to http://localhost/install to finish NN+ install."
 echo "For questions and problems log on to #newznab or #newznab-tmux on Synirc and look for zombu2"
 echo "Good Luck."
 exit 100
-
-
-
-
